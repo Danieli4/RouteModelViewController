@@ -1,6 +1,6 @@
 <?php
 
-namespace App\RMVC\Route;
+namespace app\RMVC\Route;
 
 class RouteConfiguration
 {

@@ -1,9 +1,25 @@
 <?php
+
 namespace App\RMVC;
+
+use App\RMVC\Route\Route;
+use App\RMVC\Route\RouteDispatcher;
+
 class App
 {
     public static function run()
     {
-        echo 'run';
+        $requestMethod =ucfirst( strtolower($_SERVER['REQUEST_METHOD']));
+        $methodName = 'getRoutes' . $requestMethod;
+
+        foreach (Route::$methodName() as $routeConfiguration) {
+            $routeDispatcher = new RouteDispatcher($routeConfiguration);
+            $routeDispatcher->process();
+
+        }
+//
+//        echo '<pre>';
+//        var_dump($path. str_replace('.', '/', $str) .'.php');
+//        echo '<pre>';
     }
 }
